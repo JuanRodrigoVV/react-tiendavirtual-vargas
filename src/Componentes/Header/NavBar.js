@@ -1,9 +1,10 @@
 import React from "react";
 import logo from "../../assets/Logo.png"
-import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
-/* import "./header.css" */
+import CartWidget from "../../Componentes/CartWidget";
 
-const Header = () => {
+
+
+const NavBar = () => {
     return (
         <header style={styles.header}>
         <img style={styles.img} src={logo} alt="" />
@@ -11,8 +12,9 @@ const Header = () => {
         <a style={styles.a} href="">NUESTRO TRABAJO</a> 
         <a style={styles.a} href="">PAQUETES</a> 
         <a style={styles.a} href="">CONTACTO</a> 
-        <LocalGroceryStoreIcon style={styles.icono}/>
+        <CartWidget/> 
         </header>
+        
     ) 
 }
 
@@ -50,4 +52,4 @@ const styles = {
     },
 }
 
-export default Header 
+export default NavBar
