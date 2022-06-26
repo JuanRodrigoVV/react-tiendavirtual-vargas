@@ -4,11 +4,14 @@ import NavBar  from "./Componentes/Header/NavBar"
 
 
 
+
+
 const App = () => {
   return ( 
     <div>
      <NavBar/>
      <ItemListContainer/>
+     
       
      </div> 
     
