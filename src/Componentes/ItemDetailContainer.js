@@ -29,7 +29,7 @@ const ItemDetailContainer = ({}) =>{
 
     useEffect(() => {
         
-        fetch(`https://fakestoreapi.com/products/`+{productId} )
+        fetch(`https://fakestoreapi.com/products/${productId}` )
         .then(res=>res.json())
         .then(data=>setDetalles(data)) 
         .catch(err=>console.log(err))
