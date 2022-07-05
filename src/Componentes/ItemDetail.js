@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+
 const ItemDetail = ({data}) => {
 
 
@@ -7,10 +8,8 @@ const ItemDetail = ({data}) => {
         <div style={styles.contenedor2}>
         <div style={styles.Item1}><h2 style={styles.texto} >{data.name}</h2></div>
         <div style={styles.Item2}><h1 style={styles.texto2}  >Precio {data.price}$</h1></div>
-        <div style={styles.Item3}><img style={styles.imagen2}  src={data.imagen}alt=""  /></div>
-        <div style={styles.Item4}><img style={styles.imagen3}  src={data.imagen2}alt=""  /></div>
-        <div style={styles.Item5}> <img style={styles.imagen3}  src={data.imagen3}alt=""  /></div>
-        <div style={styles.Item6}><p style={styles.p} >{data.descripcion}</p></div>
+        <div style={styles.Item3}><img style={styles.imagen2}  src={data.image}alt=""  /></div>
+       <div style={styles.Item6}><p style={styles.p} >{data.description}</p></div>
        
        
             

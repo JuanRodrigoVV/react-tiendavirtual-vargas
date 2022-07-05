@@ -12,7 +12,7 @@ const ItemList = ({paquetes}) =>{
             {paquetes.map((paquetes, i) =>{
        return <>
        
-       <Item id={paquetes.id} name={paquetes.name} price={paquetes.price} imagen={paquetes.imagen}/> 
+       <Item id={paquetes.id} name={paquetes.title} price={paquetes.price} category={paquetes.category} description={paquetes. description} imagen={paquetes.image}/> 
        </>
               
             
