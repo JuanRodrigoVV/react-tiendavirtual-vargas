@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const Item = ({id, name, price, imagen}) => {
 
@@ -9,7 +10,7 @@ const Item = ({id, name, price, imagen}) => {
        <h1 style={styles.texto}>{name}</h1>
        <h2 style={styles.texto2}>precio {price}</h2>
        <img style={styles.imagen} src={imagen}alt=""  />
-       <button>Mas detalles</button>
+       <Link to="/product/{id}"><button>Mas detalles</button></Link>
        
        
             

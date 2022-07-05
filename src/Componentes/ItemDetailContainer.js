@@ -18,6 +18,7 @@ const ItemDetailContainer = ({}) =>{
     const {productId} = useParams();
 
     const [detalles, setDetalles] = useState([]);
+    console.log(productId);
 
 {/*     const getItem = new Promise((res, rej) => {
         setTimeout(() => {
@@ -28,7 +29,7 @@ const ItemDetailContainer = ({}) =>{
 
     useEffect(() => {
         
-        fetch(`https://fakestoreapi.com/products/category/${productId}`)
+        fetch(`https://fakestoreapi.com/products/`+{productId} )
         .then(res=>res.json())
         .then(data=>setDetalles(data)) 
         .catch(err=>console.log(err))

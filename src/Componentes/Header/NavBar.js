@@ -25,7 +25,7 @@ const categories = [
             {categories.map((category) => <Link key={category.id} style={styles.links} to={category.route}>{category.name}</Link> )}
         </nav>
         </div>
-        <Link to="/cart"> <CartWidget/> </Link>
+        <Link to="/cart/"> <CartWidget/> </Link>
         </header>
         
     ) 
