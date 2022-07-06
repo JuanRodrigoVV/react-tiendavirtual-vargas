@@ -1,5 +1,5 @@
 
-import ItemCount from "./ItemCounts";
+
 import React, { useState, useEffect } from 'react';
 import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
@@ -37,27 +37,20 @@ useEffect(() => {
 
 
     
-const onAdd = (ValorCarrito) => {
-        
-   
-    alert(`compraste ${ValorCarrito} productos`)
-   
 
-
-}
 
 
     return (
         <div style={styles.contenedor} >
         <h1 style={styles.texto}>ItemListContainer</h1>
-        <ItemCount stock={5} initial={1} onAdd={onAdd}/>
+ 
         <ItemList paquetes={paquetes}/>
         </div>
       
     )
       
       
-  }
+    }
 
   const styles = {
     texto: {

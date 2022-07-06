@@ -1,7 +1,22 @@
 import React, { useState, useEffect } from 'react';
+import ItemCount from "./ItemCounts";
+
+import { Link } from 'react-router-dom';
 
 
 const ItemDetail = ({data}) => {
+
+    const [goToCart, setgoToCart] = useState(false);
+
+
+    const onAdd = (ValorCarrito) => {
+        
+        setgoToCart(true);
+     
+       
+    
+    
+    }
 
 
     return (
@@ -10,6 +25,13 @@ const ItemDetail = ({data}) => {
         <div style={styles.Item2}><h1 style={styles.texto2}  >Precio {data.price}$</h1></div>
         <div style={styles.Item3}><img style={styles.imagen2}  src={data.image}alt=""  /></div>
        <div style={styles.Item6}><p style={styles.p} >{data.description}</p></div>
+       {
+        goToCart ? 
+        <Link to="/Cart/Cart"><button>terminar compra</button></Link>
+        : <ItemCount stock={5} initial={1} onAdd={onAdd}/>
+
+       }
+       
        
        
             

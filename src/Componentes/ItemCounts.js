@@ -20,7 +20,7 @@ const ItemCount = ({stock, initial, onAdd}) => {
     return ( 
        <div style={styles.contando}>
         
-        <h1>{contador}</h1>
+        <h1 style={styles.texto}>{contador}</h1>
         <button disabled={contador >= stock}  onClick={handlerClickSumar}>+</button>
         <button disabled={contador <= 1} onClick={handlerClickRestar}>-</button>
         <button disabled={stock <= 0} onClick={() => onAdd(contador)} >"Agregar al carrito"</button>
@@ -46,6 +46,9 @@ const styles = {
         
         
 
+    },
+    texto: {
+        color: 'black',
     }
 }
 
