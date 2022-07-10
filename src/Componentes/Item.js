@@ -1,7 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { contexto } from '../Context/Contexto';
 
 const Item = ({id, name, price, imagen}) => {
+
+
+    
+
+   
+
 
 
     return (
@@ -10,6 +17,7 @@ const Item = ({id, name, price, imagen}) => {
        <h1 style={styles.texto}>{name}</h1>
        <h2 style={styles.texto2}>precio {price}</h2>
        <img style={styles.imagen} src={imagen}alt=""  />
+    
        <Link to={`/product/${id}`}><button>Mas detalles</button></Link>
        
        

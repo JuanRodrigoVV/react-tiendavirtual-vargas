@@ -1,22 +1,39 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import ItemCount from "./ItemCounts";
-
 import { Link } from 'react-router-dom';
+import { contexto } from '../Context/Contexto';
 
 
 const ItemDetail = ({data}) => {
 
+    const {productos, agregarProductos, eliminarProductos, limpiarCarro, buscarProducto} = useContext(contexto);
     const [goToCart, setgoToCart] = useState(false);
 
 
-    const onAdd = (ValorCarrito) => {
+    const onAdd = (contador) => {
         
         setgoToCart(true);
+        
+        agregarProductos(data, contador);
+        console.log(productos)
      
        
     
     
     }
+    const remover = () => {
+        eliminarProductos(data);
+        console.log(productos);
+
+    }
+    const limpiar = () => {
+        limpiarCarro();
+    }
+    const buscar = () => {
+       buscarProducto(data);
+    }
+
+
 
 
     return (
@@ -27,10 +44,14 @@ const ItemDetail = ({data}) => {
        <div style={styles.Item6}><p style={styles.p} >{data.description}</p></div>
        {
         goToCart ? 
-        <Link to="/Cart/Cart"><button>terminar compra</button></Link>
+        <Link to="/Cart/Cart"><button >terminar compra</button></Link>
         : <ItemCount stock={5} initial={1} onAdd={onAdd}/>
 
        }
+       <button onClick={remover}>Remover producto</button>
+       <button onClick={limpiar}>Limpiar Carro</button>
+       <button onClick={buscar}>buscar</button>
+   
        
        
        
