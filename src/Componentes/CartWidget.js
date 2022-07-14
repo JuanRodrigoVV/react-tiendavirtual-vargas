@@ -1,10 +1,19 @@
-import React from "react";
+import React, {useContext} from "react"
 import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
+import { contexto } from "../Context/Contexto";
 
 const CartWidget = () => {
-  return (
 
+  const { productos, eliminarProductos, calcularTotal, calcularCantidad } = useContext(contexto);
+
+
+  return (
+    <>
     <LocalGroceryStoreIcon style={styles.icono}/>
+    {productos.length !== 0 ? <h1>{calcularCantidad()}</h1>
+    : <></>
+    }
+    </>
   )
     
     

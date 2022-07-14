@@ -50,12 +50,28 @@ const CustomProvider = ({ children }) => {
    
     const limpiarCarro = () => {
         setProductos([]);
-    }
+    };
 
+
+    const calcularTotal = () => {
+        return productos.reduce(
+            (acum, actual) => acum + actual.price * actual.cantidad,
+            0
+        );
+    };
+    
+    const calcularCantidad = () => {
+        return productos.reduce(
+            (acum, actual) => acum + actual.cantidad,
+            0
+        );
+    };
+    
+    
   
 
     return (
-        <Provider value={{productos,agregarProductos,eliminarProductos, buscarProducto, limpiarCarro}}>
+        <Provider value={{productos,agregarProductos,eliminarProductos, buscarProducto, limpiarCarro, calcularTotal, calcularCantidad}}>
         {children}
         </Provider>
     );
