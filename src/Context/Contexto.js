@@ -20,14 +20,14 @@ const CustomProvider = ({ children }) => {
        let product = productos.find(product => product.id === data.id);
        if (product) {
         product.cantidad += qty;
-        newProductos = [...productos]
+        newProductos = [...productos];
+        setProductos(newProductos);
         
 
 
        }else  {
-       /*  product = {...data, cantidad: qty};
-        newProductos = [...productos, product]; */
-        const newProductos = productos.filter(prod => prod.id !== data.id);
+   
+        newProductos = [...productos];        
         newProductos.push ({...data, cantidad: qty});
         setProductos (newProductos);
         console.log(productos);
