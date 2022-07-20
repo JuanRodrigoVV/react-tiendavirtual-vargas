@@ -13,7 +13,7 @@ const Item = ({id, name, price, imagen}) => {
 
     return (
         <div style={styles.contenedor}>
-        <h2 style={styles.texto2}>id del producto {id}</h2>
+       {/*  <h2 style={styles.texto2}>id del producto {id}</h2> */}
        <h1 style={styles.texto}>{name}</h1>
        <h2 style={styles.texto2}>precio {price}</h2>
        <img style={styles.imagen} src={imagen}alt=""  />

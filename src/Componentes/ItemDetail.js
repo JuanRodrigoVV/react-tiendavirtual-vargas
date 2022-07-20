@@ -38,6 +38,7 @@ const ItemDetail = ({data}) => {
 
     return (
         <div style={styles.contenedor2}>
+      {/*   <div style={styles.Item1}><h2 style={styles.texto} >{data.id}</h2></div>  */}   
         <div style={styles.Item1}><h2 style={styles.texto} >{data.name}</h2></div>
         <div style={styles.Item2}><h1 style={styles.texto2}  >Precio {data.price}$</h1></div>
         <div style={styles.Item3}><img style={styles.imagen2}  src={data.image}alt=""  /></div>
