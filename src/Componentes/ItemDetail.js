@@ -2,13 +2,18 @@ import React, { useState, useEffect, useContext } from 'react';
 import ItemCount from "./ItemCounts";
 import { Link } from 'react-router-dom';
 import { contexto } from '../Context/Contexto';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { contexto2 } from '../Context/ContextoAuth';
+import { db } from '../firebase/firebase';
+import {collection, addDoc, serverTimestamp, doc, updateDoc} from "firebase/firestore";
 
 
 const ItemDetail = ({data}) => {
 
-    const {productos, agregarProductos, eliminarProductos, limpiarCarro, buscarProducto} = useContext(contexto);
+    const {productos, agregarProductos, eliminarProductos, limpiarCarro, buscarProducto, handleWish, resetWishes} = useContext(contexto);
     const [goToCart, setgoToCart] = useState(false);
-
+    const {usuario, wishList,  } = useContext(contexto2);
+    /* const [lista, setLista] = useState([]); */
 
     const onAdd = (contador) => {
         
@@ -34,6 +39,19 @@ const ItemDetail = ({data}) => {
     }
 
 
+/* 
+    const handleWishlist = () => {
+        const updateCollection = doc(db, "wishlist", wishList);
+        const newLista = [...lista];
+        newLista.push({data})
+        console.log(newLista)
+        setLista(newLista)
+        updateDoc(updateCollection,{Items: newLista }); 
+       
+
+    }
+ */
+
 
 
     return (
@@ -43,15 +61,22 @@ const ItemDetail = ({data}) => {
         <div style={styles.Item2}><h1 style={styles.texto2}  >Precio {data.price}$</h1></div>
         <div style={styles.Item3}><img style={styles.imagen2}  src={data.image}alt=""  /></div>
        <div style={styles.Item6}><p style={styles.p} >{data.description}</p></div>
+       
        {
         goToCart ? 
         <Link to="/Cart/Cart"><button >terminar compra</button></Link>
-        : <ItemCount stock={5} initial={1} onAdd={onAdd}/>
+        : <ItemCount stock={data.stock} initial={1} onAdd={onAdd}/>
 
        }
+       { usuario ?
+        <button onClick={()=>handleWish(data)}><p>Favoritos</p><FavoriteBorderIcon/></button> : <>
+   
+         <p> Ingresa tu cuenta para agregar a favoritos</p>     </>}
+        
        <button onClick={remover}>Remover producto</button>
        <button onClick={limpiar}>Limpiar Carro</button>
        <button onClick={buscar}>buscar</button>
+       
    
        
        

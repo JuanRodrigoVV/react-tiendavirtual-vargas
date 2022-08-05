@@ -39,6 +39,7 @@ const Cart = () => {
                 total: calcularTotal(),               
                 date: serverTimestamp(),
                 
+                
             })
             .then((result)=>{
             setidVenta(result.id);

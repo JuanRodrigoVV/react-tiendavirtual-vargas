@@ -5,17 +5,18 @@ import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
 import { db } from "../firebase/firebase";
 import { getDocs, collection, query, where } from 'firebase/firestore';
+import Purchases from './Purchases/Purchases';
 
 
 
 const ItemListContainer = (greetings) => {
-const [loeaded, setLoaded] = useState(true);
+const [loaded, setLoaded] = useState(true);
 const {categoryId} = useParams();
 const [paquetes, setPaquetes] = useState([]);
 
 
 
-console.log(categoryId);
+/* console.log(categoryId); */
 
 useEffect(() => {
 
@@ -59,8 +60,8 @@ getDocs(q)
 
     return (
         <div style={styles.contenedor} >
-        <h1 style={styles.texto}>ItemListContainer</h1>
- 
+        <Purchases/>    
+        
         <ItemList paquetes={paquetes}/>
         </div>
       
@@ -70,20 +71,7 @@ getDocs(q)
     }
 
   const styles = {
-    texto: {
-        fontSize: 50,
-        aligContent: 'center',        
-        justifyItems: 'center',
-        justifyContent: 'center',
-        alignItems: 'center',
-        justifyText: 'center',
-        backgroundColor: '#494974',        
-        display: 'flex',
-        flexDirection: 'row',
-        margin: 'auto',
-        
-
-    },
+  
     h2: {
         fontSize: 25,
         
