@@ -3,6 +3,9 @@ import { contexto2 } from '../Context/ContextoAuth';
 import {createUserWithEmailAndPassword} from 'firebase/auth';
 import {getAuth, onAuthStateChanged} from 'firebase/auth'
 import  {app}  from "../firebase/firebase";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const auth = getAuth(app);
 
@@ -54,6 +57,7 @@ const LoginPage = () => {
         <button style={styles.button} onClick={holis}>boton restore</button>
         </> 
         }
+        <ToastContainer />
     </>
     )
     

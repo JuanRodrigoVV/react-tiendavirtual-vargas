@@ -146,7 +146,7 @@ useEffect (()=>{
             
             app.auth().signInWithEmailAndPassword(email,password);
             handleWishListId(email);
-            
+            setError("")
             
             alert("ingresaste")
         } catch (error){
@@ -207,14 +207,16 @@ useEffect (()=>{
        
     };
 
-    
+    const controlChange = () => {
+        setControl(!control)
+    }
 
 
 
 
 
     return (
-        <Provider value={{usuario, handleSubmit, error, handleLogIn, handleLogOut, wishList, handleWishRestore, wishRestore2, control }}>
+        <Provider value={{usuario, handleSubmit, error, handleLogIn, handleLogOut, wishList, handleWishRestore, wishRestore2, control, controlChange }}>
         {children}
         </Provider>
     );

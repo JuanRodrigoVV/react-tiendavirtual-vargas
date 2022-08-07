@@ -2,6 +2,9 @@ import React, { createContext, useState, useContext, useEffect} from "react";
 import { contexto2 } from '../Context/ContextoAuth';
 import {doc, updateDoc} from "firebase/firestore";
 import { db } from '../firebase/firebase';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 
@@ -37,7 +40,7 @@ useEffect (()=>{
            
          
             setWishes(storage) 
-            alert("hola")
+            toasty("Se ha recuperado tu Wishlist")
             console.log(wishes)
 
         
@@ -121,6 +124,7 @@ useEffect(() => {
         let product = wishes.find(elemen => elemen.data.id === data.id)
         if (product) {
             alert("ya se encuentra añadido")
+            toasty("Ya se encuentra añadido a tu Wishlist")
         } else {
             newWishes = [...wishes]
             newWishes.push({data})
@@ -157,6 +161,17 @@ useEffect(() => {
         
     }; 
     */
+    const toasty = (msj) => {
+        toast(msj , {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
+    }
 
 
      
@@ -166,6 +181,7 @@ useEffect(() => {
         
         updateDoc(updateCollection,{items: newWishes });
         var storage = localStorage.setItem('itemsWish', JSON.stringify(newWishes))
+        toasty("Se ha agregado este producto a tu Wishlist")
 
        
 
@@ -187,7 +203,9 @@ useEffect(() => {
     return (
         <Provider value={{productos,agregarProductos,eliminarProductos, buscarProducto, limpiarCarro, calcularTotal, calcularCantidad, handleWish, setWishes, wishes, eliminarWishlist}}>
         {children}
+        <ToastContainer />
         </Provider>
+        
     );
 
 

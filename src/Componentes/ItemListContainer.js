@@ -5,7 +5,7 @@ import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
 import { db } from "../firebase/firebase";
 import { getDocs, collection, query, where } from 'firebase/firestore';
-import Purchases from './Purchases/Purchases';
+
 
 
 
@@ -16,7 +16,7 @@ const [paquetes, setPaquetes] = useState([]);
 
 
 
-/* console.log(categoryId); */
+
 
 useEffect(() => {
 
@@ -39,17 +39,6 @@ getDocs(q)
 .catch(err=>console.log(err))
 .finally(setLoaded(false));
 
-
-
-/* 
-
-
-    const URL = categoryId ? `https://fakestoreapi.com/products/category/${categoryId}` : `https://fakestoreapi.com/products`
-    fetch(URL)
-    .then(res=>res.json())
-    .then(data=>setPaquetes(data)) 
-    .catch(err=>console.log(err)) */
-    
 }, [categoryId]);
 
 
@@ -60,7 +49,7 @@ getDocs(q)
 
     return (
         <div style={styles.contenedor} >
-        <Purchases/>    
+       
         
         <ItemList paquetes={paquetes}/>
         </div>

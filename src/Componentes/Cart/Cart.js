@@ -5,6 +5,10 @@ import { contexto } from "../../Context/Contexto";
 import {collection, addDoc, serverTimestamp, doc, updateDoc} from "firebase/firestore";
 import { db } from '../../firebase/firebase';
 import Formulario from "../Formulario";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 
 
@@ -19,9 +23,20 @@ const Cart = () => {
     const [email, setemail] = useState("");
     const [cPostal, setCpostal] = useState("");
     const [datos, setdatos] = useState(false);
+    
 
 
-
+    const toasty = (id) => {
+        toast('Tu compra ha sido enviada. El código es ' + id, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
+    }
 
     
     const datosComprador = {
@@ -45,6 +60,9 @@ const Cart = () => {
             setidVenta(result.id);
             console.log(idVenta);            
             alert('Su compra ha sido enviada, su número de consulta es ' + result.id)
+            toasty(result.id)
+           
+
             
             
             })
@@ -99,7 +117,7 @@ const Cart = () => {
             
            </>}
         
-       
+       <ToastContainer />
             
         </div>
         

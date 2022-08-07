@@ -15,13 +15,15 @@ import Purchases from "./Componentes/Purchases/Purchases";
 
 
 
+
+
 const App = () => {
 
 
   return ( 
     <BrowserRouter>
     <AuthCustomProvider>
-      
+   
     <CustomProvider>
      <NavBar/>
     <Routes>
