@@ -98,19 +98,27 @@ const Cart = () => {
 
     return (
         
-        <div>
+        <div style={styles.container2}>
             
             {productos.length === 0 ? <Link to="/"><button style={styles.button}> No hay productos. Comprar ahora</button></Link> :
             <>
+
             {productos.map(product => { return <>
-                <h2 style={styles.h2} key={product.id}>{product.title}{/* "id"{product.id} */}"precio"{product.price}"cantidad"{product.cantidad}</h2>
+
+            <div style={styles.container} key={product.id}>
+                <h2 style={styles.h2} >{product.title}</h2>
+                <h2 style={styles.h2} >$ {product.price}</h2>
+                <h2 style={styles.h2} >"cantidad" {product.cantidad}</h2>
                 <img style={styles.imagen2}  src={product.image}alt=""  />
                 <button style={styles.button} onClick={() => remover(product)}>Remover producto</button>
+            </div>
+       
        </>})}
-       <h1 style={styles.h1}>   total $ {calcularTotal()}</h1>
+
+       <h1 style={styles.h1}>   Total $ {calcularTotal()}</h1>
        <h1 style={styles.h1}>   Cantidad de productos  {calcularCantidad()}</h1>
        <Formulario handleUser={handleUser} />
-        <button style={styles.button} disabled={datos == false}  onClick={finalizarCompra}>concretar compra</button>
+        <button style={styles.button2} disabled={datos == false}  onClick={finalizarCompra}>Concretar compra</button>
        
        
       
@@ -125,79 +133,83 @@ const Cart = () => {
 }
 const styles = {
     button: {
-        
-        display: 'flex',
-        flexDirection: 'column',
-        aligContent: 'center',        
-        justifyItems: 'center',
-        justifyContent: 'center',
-        alignItems: 'center',
-        justifyText: 'center',
-        padding: '20px',
-        width: 300,
+        backgroundColor: 'rgb(73, 73, 116)', 
+        width: 210,
+        alignSelf: 'center',
+        height: '35px',
+        color: 'white',
+        borderRadius: 8,
+        border: 'none',
+        width: 150,
+        margin: 10, 
 
-        marginTop: '20px',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        
-        
+    },
+    button2: {
+        backgroundColor: 'rgb(73, 73, 116)', 
+        width: 210,
+        alignSelf: 'center',
+        height: '35px',
+        color: 'white',
+        borderRadius: 8,
+        border: 'none',
+        width: 350,
+        margin: 10, 
 
     },
     h1: {
-        
-        display: 'flex',
-        flexDirection: 'column',
-        aligContent: 'center',        
-        justifyItems: 'center',
-        justifyContent: 'center',
-        alignItems: 'center',
-        justifyText: 'center',
-        padding: '20px',
-        width: 500,
-
-        marginTop: '20px',
+       
+        marginTop: '10px',
         marginLeft: 'auto',
         marginRight: 'auto',
-        
-        
-
+        fontWeight: 200,
     },
-    h2: {
-        
-        display: 'flex',
-        aligContent: 'center',        
-        justifyItems: 'center',
-        justifyContent: 'center',
-        alignItems: 'center',
-        justifyText: 'center',
-        padding: '20px',
-        width: '100%',
-
-        marginTop: '20px',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        
-        
-
+    h2: {       
+        fontSize: 15,
+        fontWeight: 200,
     },
     imagen2: {
         
-        display: 'flex',
-        flexDirection: 'column',
-        aligContent: 'center',        
-        justifyItems: 'center',
-        justifyContent: 'center',
-        alignItems: 'center',
-        justifyText: 'center',
-        padding: '20px',
+        
+        padding: '10px',
         width: '100px',
 
-        marginTop: '20px',
+       
         marginLeft: 'auto',
         marginRight: 'auto',
         
         
 
+    },
+    container:{
+        width: 300,
+        height: 310,
+        borderRadius: 8,
+        border: '1px solid rgba(0, 0, 0, 0.3)',
+        boxShadow: '0px 3px 5px rgba(0, 0, 0, 0.2)',
+        marginLeft: 20,
+        display: 'flex',
+        flexDirection: 'column',
+        aligContent: 'center',        
+        justifyItems: 'center',
+        margin: '10px',
+    
+        
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+    },
+    container2:{
+        
+        display: 'flex',
+        flexDirection: 'column',
+        aligContent: 'center',        
+        justifyItems: 'center',
+        margin: '10px',
+    
+        
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
     },
 }
 export default Cart

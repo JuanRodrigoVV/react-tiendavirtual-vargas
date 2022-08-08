@@ -86,11 +86,12 @@ useEffect(() => {
         const prod = productos.filter(product=> product.id !== data.id);
         setProductos(prod)
         var storage = localStorage.setItem('cart', JSON.stringify(prod))
+       
         
     };
     const buscarProducto = (data) => {
         let prod = productos.find(product => product.id === data.id) ? true : false;
-        if (prod == true){console.log("se encontró")} else if (prod == false) {console.log("no se encontro")}
+        if (prod == true){toasty("Este producto se encuentra en tu carrito")} else if (prod == false) {toasty("No se ha encontrado el producto en tu carrito")}
     };
   
     
@@ -99,6 +100,7 @@ useEffect(() => {
     const limpiarCarro = () => {
         setProductos([]);
         var storage = localStorage.removeItem('cart')
+        toasty("Su carro se ha vaciado")
     };
 
 
@@ -118,18 +120,20 @@ useEffect(() => {
     
 
     const handleWish = (data) => {
-        
         let newWishes;
+        if (usuario === null){
+
+        }else
         
-        let product = wishes.find(elemen => elemen.data.id === data.id)
+        {let product = wishes.find(elemen => elemen.data.id === data.id)
         if (product) {
-            alert("ya se encuentra añadido")
+            
             toasty("Ya se encuentra añadido a tu Wishlist")
         } else {
             newWishes = [...wishes]
             newWishes.push({data})
             setWishes(newWishes)
-        }
+        }}
         handleWishlist(newWishes);
         }
     
@@ -176,12 +180,20 @@ useEffect(() => {
 
      
     const handleWishlist = (newWishes) => {
-        const updateCollection = doc(db, "wishlist", wishList);
+
+        if(usuario === null){ 
+           toasty("Crea una cuenta para agregar productos a tu Wishlist")}
+        else {
+
+            const updateCollection = doc(db, "wishlist", wishList);
         
         
         updateDoc(updateCollection,{items: newWishes });
         var storage = localStorage.setItem('itemsWish', JSON.stringify(newWishes))
         toasty("Se ha agregado este producto a tu Wishlist")
+            
+
+        }
 
        
 

@@ -41,8 +41,9 @@ const styles = {
         display: 'flex',
         flexDirection: 'row',
         height: 50,
-        width: 200,
+        width: 240,
         padding: 10,
+        borderRadius: 8,
         
         
 

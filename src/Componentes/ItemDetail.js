@@ -39,43 +39,42 @@ const ItemDetail = ({data}) => {
     }
 
 
-/* 
-    const handleWishlist = () => {
-        const updateCollection = doc(db, "wishlist", wishList);
-        const newLista = [...lista];
-        newLista.push({data})
-        console.log(newLista)
-        setLista(newLista)
-        updateDoc(updateCollection,{Items: newLista }); 
-       
-
-    }
- */
 
 
 
     return (
         <div style={styles.contenedor2}>
-      {/*   <div style={styles.Item1}><h2 style={styles.texto} >{data.id}</h2></div>  */}   
-        <div style={styles.Item1}><h2 style={styles.texto} >{data.name}</h2></div>
-        <div style={styles.Item2}><h1 style={styles.texto2}  >Precio {data.price}$</h1></div>
+   
+        <div style={styles.Item2}><h1 style={styles.texto2} >{data.title}</h1></div>
+        <div style={styles.Item1}><h1 style={styles.texto1}  >Precio $ {data.price}</h1></div>
+        {/* <div style={styles.Item6}><h1 style={styles.texto2} >{data.title}</h1></div> */}
         <div style={styles.Item3}><img style={styles.imagen2}  src={data.image}alt=""  /></div>
-       <div style={styles.Item6}><p style={styles.p} >{data.description}</p></div>
+       <div style={styles.Item4} ><p style={styles.p} >{data.description}</p></div>
        
        {
         goToCart ? 
-        <Link to="/Cart/Cart"><button >terminar compra</button></Link>
-        : <ItemCount stock={data.stock} initial={1} onAdd={onAdd}/>
+        <div style={styles.Item9}>
+
+        <Link to="/Cart/Cart">
+          
+            <button>terminar compra</button>
+        
+            </Link>
+        </div>
+        : <div style={styles.Item9}>
+            <ItemCount stock={data.stock} initial={1} onAdd={onAdd}/>
+
+        </div>
 
        }
        { usuario ?
-        <button onClick={()=>handleWish(data)}><p>Favoritos</p><FavoriteBorderIcon/></button> : <>
+        <button style={styles.button2}  onClick={()=>handleWish(data)}><FavoriteBorderIcon/></button> : <>
    
-         <p> Ingresa tu cuenta para agregar a favoritos</p>     </>}
+         <p style={styles.Item5}> Ingresa tu cuenta para agregar a favoritos</p>     </>}
         
-       <button onClick={remover}>Remover producto</button>
-       <button onClick={limpiar}>Limpiar Carro</button>
-       <button onClick={buscar}>buscar</button>
+       <button style={styles.Item6} onClick={remover}>Remover producto</button>
+       <button style={styles.Item7} onClick={limpiar}>Limpiar Carro</button>
+       <button style={styles.Item8} onClick={buscar}>Buscar</button>
        
    
        
@@ -84,7 +83,7 @@ const ItemDetail = ({data}) => {
             
       
 
-        </div>
+        </div>  
     )
 
 
@@ -93,80 +92,163 @@ const ItemDetail = ({data}) => {
 
 }
 const styles = {
+
+    button2: {
+    
+        
+        border: 'none',
+        gridColumnStart: '1',
+    gridColumnEnd: '1',
+    
+    gridRowStart: '1',
+    gridRowEnd: '1 ',
+    marginLeft: 370,
+    marginTop: 25,
+        
+       
+    },
+    
     imagen2: {
-        height: 500,
-        width: 500,
+        height: 340,
+        width: 340, 
+        padding: 35,
+        border: '1px solid rgba(0, 0, 0, 0.3)',
+        
+        boxShadow: '3px 3px 5px rgba(0, 124, 8.4, 0.2)',
+        borderRadius: 8,
         
         
 
     },
-    imagen3: {
-        height: 200,
-        width: 200,
-        
-        
-
-    },
+   
     texto:{
     fontSize: 50,
 },
 texto2:{
+    fontSize: 20,
+    fontWeight: '500',
+},
+texto1:{
     fontSize: 30,
+    fontWeight: '500',
 },
 p:{
-    fontSize: 30,
+    fontSize: 15,
+    textAlign: 'justify',
+    
 },
 contenedor2:{
     marginLeft: 20,
     display: 'grid',
-    gridTemplateColumns: '500px 500px',
-    gridTemplateRows: '100px 100px 500px 200px',
+    gridTemplateColumns: '450px 450px 450px',
+    gridTemplateRows: '100px 100px 100px 100px 100px',
     alignItems: 'center',
     justifyItems: 'center',
     color: 'rgb(73, 73, 116)',
+    height: 500,
+    
+   
     
     
   
    
 },
 Item1: {
-    gridColumnStart: '1',
-    gridColumnEnd: '3',
+    gridColumnStart: '2',
+    gridColumnEnd: '2',
+    
     gridRowStart: '1',
-    gridRowEnd: '1',
+    gridRowEnd: '3  ',
+    textAlign: 'center',
+    alignSelf: 'center',
     
     
 },
 Item2: {
-    gridColumnStart: '1',
-    gridColumnEnd: '3',
+    gridColumnStart: '2',
+    gridColumnEnd: '2',
     gridRowStart: '2',
-    gridRowEnd: '2',
+    gridRowEnd: '4', 
+    alignSelf: 'center',
 },
 Item3: {
     gridColumnStart: '1',
-    gridColumnEnd: '2',
-    gridRowStart: '3',
-    gridRowEnd: '3',
+    gridColumnEnd: '1',
+    gridRowStart: '1',
+    gridRowEnd: '6',
 },
 Item4: {
-    gridColumnStart: '1',
+   gridColumnStart: '2',
     gridColumnEnd: '2',
     gridRowStart: '4',
-    gridRowEnd: '4',
+    gridRowEnd: '5', 
 },
 Item5: {
-    gridColumnStart: '2',
-    gridColumnEnd: '2',
-    gridRowStart: '4',
-    gridRowEnd: '4',
+    gridColumnStart: '1',
+    gridColumnEnd: '1',
+    gridRowStart: '1',
+    gridRowEnd: '1',
+    marginTop: 35,
 },
 Item6: {
-    gridColumnStart: '2',
-    gridColumnEnd: '2',
+    gridColumnStart: '3',
+    gridColumnEnd: '3',
     gridRowStart: '3',
+    gridRowEnd: '5',
+    backgroundColor: "#494974", 
+    border: 'none',
+    color: 'white',
+    padding: '15px 32px',
+    textAlign: 'center',
+    textDecoration: 'none',
+    display: 'inline-block',
+    fontSize: '16px',
+    borderRadius: 8,
+    width: 240,
+},
+Item7: {
+    gridColumnStart: '3',
+    gridColumnEnd: '3',
+    gridRowStart: '2',
+    gridRowEnd: '4',
+    backgroundColor: "#494974", 
+    border: 'none',
+    color: 'white',
+    padding: '15px 32px',
+    textAlign: 'center',
+    textDecoration: 'none',
+    display: 'inline-block',
+    fontSize: '16px',
+    borderRadius: 8,
+    width: 240,
+},
+Item8: {
+    gridColumnStart: '3',
+    gridColumnEnd: '3',
+    gridRowStart: '1',
     gridRowEnd: '3',
-}
+    backgroundColor: "#494974", 
+    border: 'none',
+    color: 'white',
+    padding: '15px 32px',
+    textAlign: 'center',
+    textDecoration: 'none',
+    display: 'inline-block',
+    fontSize: '16px',
+    borderRadius: 8,
+    widht: 150,
+    width: 240,
+},
+
+
+Item9: {
+    gridColumnStart: '3',
+    gridColumnEnd: '3',
+    gridRowStart: '4',
+    gridRowEnd: '6  ',
+    
+},
+
 }
 
 export default ItemDetail

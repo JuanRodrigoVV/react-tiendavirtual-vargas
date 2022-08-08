@@ -35,26 +35,37 @@ const LoginPage = () => {
     };
 
 
-    const holis = () => {
-        console.log(wishRestore2)
-    }
+  
 
 
     return (
         <>
-      {usuario ? <><h1>{usuario.email}</h1> <button onClick={handleLogOut}>logout</button></>: <h1>hola como estas</h1>}
-      <h1>{error}</h1>
-    
-        {usuario ? <></> : <>
-        <form style={styles.formulario} >
+      {usuario ? <>
+      <h1 >{usuario.email}</h1> <button onClick={handleLogOut}>logout</button></>:
+      
+      <h1 style={styles.h1}>Bienvenido</h1>}
+      <h1 style={styles.h1}>{error}</h1>
+        
+        {usuario ? <></> : 
+        <>
+        <div style={styles.container}>
+
+        <form  >
         <label style={styles.label} htmlFor="">Email</label>
-        <input style={styles.button} name="email" type="text" placeholder="Email" onChange={handleChange}></input>
+        <div>
+        <input style={styles.input} name="email" type="text" placeholder="Email" onChange={handleChange}></input>
+
+        </div>
         <label style={styles.label} htmlFor="">Password</label>
-        <input style={styles.button} name="password" type="password" placeholder="Password" onChange={handleChange}></input>
+        <div>
+
+        <input style={styles.input} name="password" type="password" placeholder="Password" onChange={handleChange}></input>
+        </div>
         </form>
         <button style={styles.button}  onClick={()=>handleLogIn(user.email, user.password)} >Ingresar</button>
         <button style={styles.button} onClick={()=>handleSubmit(user.email, user.password)}>Registrarme</button>
-        <button style={styles.button} onClick={holis}>boton restore</button>
+        <p style={styles.p}>Ingresa con tu cuenta o crea una nueva para empezar a comprar</p>
+        </div>
         </> 
         }
         <ToastContainer />
@@ -63,99 +74,62 @@ const LoginPage = () => {
     
 }
 const styles = {
+    label: {
+       
+    },
+    
+    input: {
+        marginTop: '5px',
+        marginBottom: '5px',
+        width: 310,
+        height: '25px',
+       
+    },
     button: {
-        
-        display: 'flex',
-        flexDirection: 'column',
-        aligContent: 'center',        
-        justifyItems: 'center',
-        justifyContent: 'center',
-        alignItems: 'center',
-        justifyText: 'center',
-        padding: '20px',
-        width: 300,
-
-        marginTop: '20px',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        
-        
+        backgroundColor: 'rgb(73, 73, 116)', 
+        width: 320,
+        alignSelf: 'center',
+        height: '35px',
+        color: 'white',
 
     },
     h1: {
-        
-        display: 'flex',
-        flexDirection: 'column',
-        aligContent: 'center',        
-        justifyItems: 'center',
-        justifyContent: 'center',
-        alignItems: 'center',
-        justifyText: 'center',
-        padding: '20px',
-        width: 500,
 
-        marginTop: '20px',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        
+        textAlign: 'center',
+  
+        fontWeight: '100',
         
 
     },
-    h2: {
-        
-        display: 'flex',
-        aligContent: 'center',        
-        justifyItems: 'center',
-        justifyContent: 'center',
-        alignItems: 'center',
-        justifyText: 'center',
-        padding: '20px',
-        width: '100%',
 
-        marginTop: '20px',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        
-        
-
-    },
-    imagen2: {
+    container: {
         
         display: 'flex',
         flexDirection: 'column',
-        aligContent: 'center',        
-        justifyItems: 'center',
-        justifyContent: 'center',
-        alignItems: 'center',
-        justifyText: 'center',
-        padding: '20px',
-        width: '100px',
+   
 
-        marginTop: '20px',
+        textAlign: 'center',
+    
+        width: 350,
+        marginBottom: '20px',
+   
         marginLeft: 'auto',
         marginRight: 'auto',
+        border: '1px solid rgba(0, 0, 0, 0.3)',
         
+        boxShadow: '3px 3px 5px rgba(0, 124, 8.4, 0.2)',
+        height: 330,
+        justifyContent: 'space-around',
+        borderRadius: 8,
         
 
     },
-    formulario: {
+    p: {
+        fontSize: 12, 
+        marginTop: -5,
         
-        display: 'flex',
-        flexDirection: 'column',
-        aligContent: 'center',        
-        justifyItems: 'center',
-        justifyContent: 'center',
-        alignItems: 'center',
-        justifyText: 'center',
-        padding: '20px',
-        width: 1200,
-
-        marginTop: '20px',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        
-        
-
+        marginLeft: '10px' ,
+        marginRight: '10px',
     }
 }
 export default LoginPage

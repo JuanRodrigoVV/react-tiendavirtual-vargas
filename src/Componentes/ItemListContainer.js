@@ -68,19 +68,27 @@ getDocs(q)
 
     },
     contenedor: {
-     
-        aligContent: 'center',        
+    /*     width: 330,
+        height: 430,
+        borderRadius: 8,
+        boxShadow: '0px 2px 2px rgba(0, 0, 0, 0.2)', */
+       /*  aligContent: 'center',        
         justifyItems: 'center',
         justifyContent: 'center',
         alignItems: 'center',
         justifyText: 'center',
+        */
         
-        width: 1200,
-
+        justifyContent: 'center',
+        
+        display: 'flex',
+        flexDirection: 'row',
+        marginTop: 40,
+      /* 
         marginTop: '20px',
         marginLeft: 'auto',
         marginRight: 'auto',
-        
+         */
         
 
     },
