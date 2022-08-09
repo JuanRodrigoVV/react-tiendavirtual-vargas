@@ -1,5 +1,5 @@
-import React, {useState, useContext, useEffect} from "react";
-import { contexto2 } from "../Context/ContextoAuth";
+import React, {useState, useContext} from "react";
+import { contexto2 } from "../../Context/ContextoAuth";
 
 
 
@@ -64,8 +64,7 @@ const styles = {
         justifyItems: 'center',
         justifyContent: 'center',
         alignItems: 'center',
-        justifyText: 'center',
-        
+        justifyText: 'center',        
         width: 500,
         height: 600,
         marginTop: '20px',

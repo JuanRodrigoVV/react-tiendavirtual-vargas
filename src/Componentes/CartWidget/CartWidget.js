@@ -1,11 +1,10 @@
 import React, {useContext} from "react"
 import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
-
-import { contexto } from "../Context/Contexto";
+import { contexto } from "../../Context/Contexto";
 
 const CartWidget = () => {
 
-  const { productos, eliminarProductos, calcularTotal, calcularCantidad,  } = useContext(contexto);
+  const { productos, calcularCantidad} = useContext(contexto);
 
 
   return (
@@ -13,7 +12,7 @@ const CartWidget = () => {
     <LocalGroceryStoreIcon style={styles.icono}/>
     {productos.length !== 0 ? 
     <h1 style={styles.h1}>{calcularCantidad()}</h1>
-    : <><></></>
+    : <></>
     }
    
     </div>

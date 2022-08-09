@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, {useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { contexto } from '../Context/Contexto';
+import { contexto } from '../../Context/Contexto';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 const Item = ({id, name, price, imagen, data}) => {
@@ -15,19 +15,12 @@ const Item = ({id, name, price, imagen, data}) => {
 
     return (
     
-        <div style={styles.contenedor}>
-        <button style={styles.button2}  onClick={()=>handleWish(data)}><FavoriteBorderIcon/></button>
-       {/*  <h2 style={styles.texto2}>id del producto {id}</h2> */}
-       <h2 style={styles.texto2}>$ {price}</h2>
-       <img style={styles.imagen} src={imagen}alt=""  />
-       <h1 style={styles.texto}>{name}</h1>
-        
-       <Link to={`/product/${id}`}><button style={styles.button}>Mas detalles</button></Link>
-       
-       
-            
-      
-
+        <div key={Math.random} style={styles.contenedor}>
+             <button style={styles.button2}  onClick={()=>handleWish(data)}><FavoriteBorderIcon/></button>       
+             <h2 style={styles.texto2}>$ {price}</h2>
+             <img style={styles.imagen} src={imagen}alt=""  />
+             <h1 style={styles.texto}>{name}</h1>
+             <Link to={`/product/${id}`}><button style={styles.button}>Mas detalles</button></Link>
         </div>
     )
 

@@ -1,10 +1,9 @@
-import { Collections } from "@mui/icons-material";
 import React, {useContext, useState} from "react"
 import { Link } from "react-router-dom";
 import { contexto } from "../../Context/Contexto";   
 import {collection, addDoc, serverTimestamp, doc, updateDoc} from "firebase/firestore";
 import { db } from '../../firebase/firebase';
-import Formulario from "../Formulario";
+import Formulario from "../Formulario/Formulario";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -53,18 +52,12 @@ const Cart = () => {
                 items: productos,
                 total: calcularTotal(),               
                 date: serverTimestamp(),
-                
-                
+                              
             })
             .then((result)=>{
-            setidVenta(result.id);
-            console.log(idVenta);            
-            alert('Su compra ha sido enviada, su número de consulta es ' + result.id)
+            setidVenta(result.id);                    
             toasty(result.id)
            
-
-            
-            
             })
             limpiarCarro();
 
@@ -81,12 +74,12 @@ const Cart = () => {
 
     const remover = (data) => {
         eliminarProductos(data);
-        console.log(data);
-
+        
     }
 
+    
     const handleUser = (nombre,direccion,email,cpostal) => {
-        console.log(nombre,direccion,email,cpostal);
+        
         setnombre(nombre);
         setdireccion(direccion);
         setemail(email);
@@ -115,14 +108,11 @@ const Cart = () => {
        
        </>})}
 
-       <h1 style={styles.h1}>   Total $ {calcularTotal()}</h1>
-       <h1 style={styles.h1}>   Cantidad de productos  {calcularCantidad()}</h1>
-       <Formulario handleUser={handleUser} />
+        <h1 style={styles.h1}>   Total $ {calcularTotal()}</h1>
+        <h1 style={styles.h1}>   Cantidad de productos  {calcularCantidad()}</h1>
+        <Formulario handleUser={handleUser} />
         <button style={styles.button2} disabled={datos == false}  onClick={finalizarCompra}>Concretar compra</button>
-       
-       
-      
-            
+         
            </>}
         
        <ToastContainer />
@@ -132,6 +122,7 @@ const Cart = () => {
     )
 }
 const styles = {
+    
     button: {
         backgroundColor: 'rgb(73, 73, 116)', 
         width: 210,

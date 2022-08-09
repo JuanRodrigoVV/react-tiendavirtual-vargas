@@ -1,9 +1,8 @@
 import React, { useState, useContext } from "react";
-import { contexto2 } from '../Context/ContextoAuth';
-import {createUserWithEmailAndPassword} from 'firebase/auth';
-import {getAuth, onAuthStateChanged} from 'firebase/auth'
-import  {app}  from "../firebase/firebase";
-import { ToastContainer, toast } from 'react-toastify';
+import { contexto2 } from '../../Context/ContextoAuth';
+import {getAuth} from 'firebase/auth'
+import  {app}  from "../../firebase/firebase";
+import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from "react-router-dom";
 
@@ -13,31 +12,21 @@ const auth = getAuth(app);
 
 const LoginPage = () => {
 
-
-
-    const {handleSubmit, usuario, error, handleLogIn, handleLogOut, handleWishRestore, wishRestore2 } = useContext(contexto2);
+    const {handleSubmit, usuario, error, handleLogIn, handleLogOut} = useContext(contexto2);
     
 
-
-    const [user, setUser] = useState({
-        
+    const [user, setUser] = useState({      
        
-        email: '',
-        
+        email: '',        
         password:''
-
         
     });
     
     const handleChange = ({target:{name, value}}) => {
-        setUser({...user, [name]: value})
-      
+        setUser({...user, [name]: value})      
         
     };
-
-
-  
-
+ 
 
     return (
         <>
@@ -47,7 +36,7 @@ const LoginPage = () => {
       <Link style={styles.center} to="/">
       <button style={styles.button2}>Comprar</button>
       </Link>
-      <button style={styles.button2} onClick={handleLogOut}>logout</button>
+      <button style={styles.button2} onClick={handleLogOut}>Logout</button>
       </div>:
       
       <h1 style={styles.h1}>Bienvenido</h1>}
@@ -81,10 +70,7 @@ const LoginPage = () => {
     
 }
 const styles = {
-    label: {
-       
-    },
-    
+        
     input: {
         marginTop: '5px',
         marginBottom: '5px',
@@ -103,36 +89,26 @@ const styles = {
 
     },
     h1: {
-
-        textAlign: 'center',
-  
-        fontWeight: '100',
-        
-
+        textAlign: 'center',  
+        fontWeight: '100',     
     },
 
-    container: {
-        
+    container: {        
         display: 'flex',
-        flexDirection: 'column',
-   
-
-        textAlign: 'center',
-    
+        flexDirection: 'column',  
+        textAlign: 'center',    
         width: 350,
-        marginBottom: '20px',
-   
+        marginBottom: '20px',   
         marginLeft: 'auto',
         marginRight: 'auto',
-        border: '1px solid rgba(0, 0, 0, 0.3)',
-        
+        border: '1px solid rgba(0, 0, 0, 0.3)',        
         boxShadow: '3px 3px 5px rgba(0, 124, 8.4, 0.2)',
         height: 330,
         justifyContent: 'space-around',
-        borderRadius: 8,
-        
+        borderRadius: 8,        
 
     },
+
     p: {
         fontSize: 12, 
         marginTop: -5,
@@ -140,6 +116,7 @@ const styles = {
         marginLeft: '10px' ,
         marginRight: '10px',
     },
+
     button2: {
         backgroundColor: 'rgb(73, 87, 116)', 
         width: 100,
@@ -150,21 +127,18 @@ const styles = {
         boxShadow: '3px 3px 5px rgba(0, 124, 8.4, 0.2)',
         borderRadius: 8,
         alignItems: 'center',
-        
-        
-        
-        
-        
-        
+                
     },
+
     center: {
         margin: '10px',
         alignSelf: 'center',
         alignItems: 'center',
-        },
-        container3: {
+    },
+
+    container3: {
             display: 'flex',
             flexDirection: 'column'
-        }
+    }
 }
 export default LoginPage

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const WishList = () => {
 
  const {wishes, eliminarWishlist} = useContext(contexto);
- console.log(wishes)
+ 
 
 
   return (
@@ -15,7 +15,6 @@ const WishList = () => {
             
     {wishes.length === 0 ? <Link to="/">
         <div style={styles.center}>
-
         <button style={styles.button2}> Explorar Productos</button>
         </div>
         </Link> :
@@ -30,14 +29,7 @@ const WishList = () => {
         <Link to={`/product/${product.data.id}`}><button style={styles.button}>Comprar producto</button></Link>
     </div>
 
-</>})}
-
-    
-
-
-
-    
-   </>}
+</>})}</>}
 
 
     

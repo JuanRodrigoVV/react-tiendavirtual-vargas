@@ -1,13 +1,12 @@
 import React, {useState, useEffect, useContext} from "react";
 import logo from "../../assets/Logo.png"
-import CartWidget from "../../Componentes/CartWidget";
+import CartWidget from "../../Componentes/CartWidget/CartWidget";
 import { Link } from "react-router-dom";
-import { getDocs, collection,  where } from 'firebase/firestore';
+import { getDocs, collection} from 'firebase/firestore';
 import { db, app } from "../../firebase/firebase";
-import { contexto } from '../../Context/Contexto';
 import {contexto2} from '../../Context/ContextoAuth'
-import {getAuth, onAuthStateChanged} from 'firebase/auth'
-import WishWidget from "./WishWidget";
+import {getAuth} from 'firebase/auth'
+import WishWidget from "../WishWidget/WishWidget";
 const auth = getAuth(app);
 
 
@@ -25,21 +24,16 @@ const NavBar = () => {
                 id: results.id,
                 ...results.data()
             
-            }
-        
-            
+            } 
        
 })
     setCategorias(lista);
-    console.log(lista)
-    
-    
-    
+ 
 }) 
 .catch(err=>console.log(err))
 
-
 },[])
+
 
 const [categorias, setCategorias] = useState([]);
 

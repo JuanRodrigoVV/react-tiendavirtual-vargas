@@ -7,10 +7,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 
-
 export const contexto = createContext();
 const {Provider} = contexto;
-
 const CustomProvider = ({ children }) => {
     const [productos, setProductos] = useState([]);
     const [wishes, setWishes] = useState([]);
@@ -19,38 +17,28 @@ const CustomProvider = ({ children }) => {
 
 
 
-useEffect (()=>{
-     
-    
-        var storage = JSON.parse(localStorage.getItem('itemsWish'))
-    
-       if (storage === null) {
-            console.log("ESTO 1 ES" + storage)
-            console.log(control)
-            setWishes([])
-            
-        } else {
-
-           
-         
-            setWishes(storage) 
-            toasty("Se ha recuperado tu Wishlist")
-            console.log(wishes)
-
+    useEffect (()=>{     
         
-        } 
-        
-            },[control]);
+        var storage = JSON.parse(localStorage.getItem('itemsWish'))    
+        if (storage === null) {            
+                setWishes([])            
+            } else {
+                setWishes(storage) 
+                toasty("Se ha recuperado tu Wishlist")         
+            }         
+    },[control]);
 
-useEffect(() => {
-  var storage2 = JSON.parse(localStorage.getItem('cart'))
-  if (storage2 === null) {
 
-  } else {
-    setProductos(storage2)
-  }
 
-}, [])
+    useEffect(() => {
+    var storage2 = JSON.parse(localStorage.getItem('cart'))
+    if (storage2 === null) {
+
+    } else {
+        setProductos(storage2)
+    }
+
+    }, [])
 
          
   const agregarProductos = (data, qty) => {
@@ -62,14 +50,11 @@ useEffect(() => {
         setProductos(newProductos);
         var storage = localStorage.setItem('cart', JSON.stringify(newProductos))
         
-
-
        }else  {
    
         newProductos = [...productos];        
         newProductos.push ({...data, cantidad: qty});
-        setProductos (newProductos);
-        console.log(productos);
+        setProductos (newProductos);        
         var storage = localStorage.setItem('cart', JSON.stringify(newProductos))
        }
 
@@ -117,48 +102,19 @@ useEffect(() => {
         let newWishes;
         if (usuario === null){
 
-        }else
-        
+        }else        
         {let product = wishes.find(elemen => elemen.data.id === data.id)
-        if (product) {
-            
+        if (product) {            
             toasty("Ya se encuentra añadido a tu Wishlist")
         } else {
             newWishes = [...wishes]
             newWishes.push({data})
-            setWishes(newWishes)
+            setWishes(newWishes)            
         }}
         handleWishlist(newWishes);
-        }
-    
+    }    
 
-
-
- /*    const handleWish = (data) => {
-        
-        let newWishes;
-        var storage = JSON.parse(localStorage.getItem('itemsWish'))         
-        let product = storage.find(elemen => elemen.id === data.id);
-        console.log(product)
-        if (product) {
-         alert("ya se encuentra añadido")
-        
  
-        }else  {
-        var storage = JSON.parse(localStorage.getItem('itemsWish')) 
-         newWishes = [storage];        
-         /* newWishes.push ({data}); 
-         setWishes(newWishes);
-         console.log(wishes);
-         
-         handleWishlist(newWishes);
-        } 
-        
-        
-        
-        
-    }; 
-    */
     const toasty = (msj) => {
         toast(msj , {
             position: "top-right",
@@ -178,30 +134,21 @@ useEffect(() => {
         if(usuario === null){ 
            toasty("Crea una cuenta para agregar productos a tu Wishlist")}
         else {
-
-            const updateCollection = doc(db, "wishlist", wishList);
-        
-        
+        const updateCollection = doc(db, "wishlist", wishList); 
         updateDoc(updateCollection,{items: newWishes });
         var storage = localStorage.setItem('itemsWish', JSON.stringify(newWishes))
-        toasty("Se ha agregado este producto a tu Wishlist")
-            
-
-        }
-
-       
-
+        toasty("Se ha agregado este producto a tu Wishlist")   
+        }      
     }
+
+
     const eliminarWishlist = (data) => {
         const delWish = (wishes.filter(product=> product.data.id !== data));
-        setWishes(delWish)
-        /* console.log(delWishs) */        
+        setWishes(delWish)            
         const updateCollection = doc(db, "wishlist", wishList);          
-        updateDoc(updateCollection,{items: delWish}); 
-        /* localStorage.removeItem('itemsWish'); */
-        var storage = localStorage.setItem('itemsWish', JSON.stringify(delWish))
-        
-        
+        updateDoc(updateCollection,{items: delWish});        
+        var storage = localStorage.setItem('itemsWish', JSON.stringify(delWish))    
+     
     };  
   
   

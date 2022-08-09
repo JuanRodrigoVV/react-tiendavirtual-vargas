@@ -1,11 +1,11 @@
 import React from "react";
-import ItemListContainer from "./Componentes/ItemListContainer"
+import ItemListContainer from "./Componentes/ItemListcontainer/ItemListContainer";
 import NavBar  from "./Componentes/Header/NavBar"
-import ItemDetailContainer from "./Componentes/ItemDetailContainer";
+import ItemDetailContainer from "./Componentes/ItemDetailContainer/ItemDetailContainer";
 import Cart from "./Componentes/Cart/Cart";
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import CustomProvider from "./Context/Contexto.js"
-import LoginPage from "./Componentes/LoginPage";
+import LoginPage from "./Componentes/LoginPage/LoginPage";
 import AuthCustomProvider from "./Context/ContextoAuth";
 import WishList from "./Componentes/WishList/WishList";
 import Purchases from "./Componentes/Purchases/Purchases";

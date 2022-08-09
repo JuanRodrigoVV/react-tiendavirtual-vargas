@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import ItemDetail from '../Componentes/ItemDetail';
+import ItemDetail from '../../Componentes/ItemDetail/ItemDetail';
 import { useParams } from "react-router-dom";
-import { db } from '../firebase/firebase';
+import { db } from '../../firebase/firebase';
 import {doc, getDoc, collection} from "firebase/firestore"
 
 
@@ -12,7 +12,7 @@ const ItemDetailContainer = ({}) =>{
     const {productId} = useParams();
     const [detalles, setDetalles] = useState([]);
     const [loaded, setLoaded] = useState(true);
-    /* console.log(productId); */
+    
 
     
 
@@ -26,7 +26,7 @@ const ItemDetailContainer = ({}) =>{
                 id: result.id,
                 ...result.data()}
             setDetalles(datos);
-            console.log(detalles);
+            
             
         })
         

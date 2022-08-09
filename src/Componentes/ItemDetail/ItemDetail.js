@@ -1,39 +1,39 @@
-import React, { useState, useEffect, useContext } from 'react';
-import ItemCount from "./ItemCounts";
+import React, { useState, useContext } from 'react';
+import ItemCount from "../ItemCount/ItemCounts";
 import { Link } from 'react-router-dom';
-import { contexto } from '../Context/Contexto';
+import { contexto } from '../../Context/Contexto';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import { contexto2 } from '../Context/ContextoAuth';
-import { db } from '../firebase/firebase';
-import {collection, addDoc, serverTimestamp, doc, updateDoc} from "firebase/firestore";
+import { contexto2 } from '../../Context/ContextoAuth';
+
+
 
 
 const ItemDetail = ({data}) => {
 
-    const {productos, agregarProductos, eliminarProductos, limpiarCarro, buscarProducto, handleWish, resetWishes} = useContext(contexto);
+    const {agregarProductos, eliminarProductos, limpiarCarro, buscarProducto, handleWish} = useContext(contexto);
     const [goToCart, setgoToCart] = useState(false);
-    const {usuario, wishList,  } = useContext(contexto2);
-    /* const [lista, setLista] = useState([]); */
+    const {usuario} = useContext(contexto2);
+    
 
     const onAdd = (contador) => {
         
         setgoToCart(true);
-        
         agregarProductos(data, contador);
-        console.log(productos)
-     
        
-    
-    
     }
+
+
     const remover = () => {
         eliminarProductos(data);
-        console.log(productos);
+        
 
     }
+
     const limpiar = () => {
         limpiarCarro();
     }
+
+
     const buscar = () => {
        buscarProducto(data);
     }
@@ -44,53 +44,36 @@ const ItemDetail = ({data}) => {
 
     return (
         <div style={styles.contenedor2}>
-   
-        <div style={styles.Item2}><h1 style={styles.texto2} >{data.title}</h1></div>
-        <div style={styles.Item1}><h1 style={styles.texto1}  >Precio $ {data.price}</h1></div>
-        {/* <div style={styles.Item6}><h1 style={styles.texto2} >{data.title}</h1></div> */}
-        <div style={styles.Item3}><img style={styles.imagen2}  src={data.image}alt=""  /></div>
-       <div style={styles.Item4} ><p style={styles.p} >{data.description}</p></div>
-       
-       {
-        goToCart ? 
-        <div style={styles.Item9}>
 
-        <Link to="/Cart/Cart">
-          
-            <button style={styles.Item6}>Terminar compra</button>
+            <div style={styles.Item2}><h1 style={styles.texto2} >{data.title}</h1></div>
+            <div style={styles.Item1}><h1 style={styles.texto1}  >Precio $ {data.price}</h1></div>
+            <div style={styles.Item3}><img style={styles.imagen2}  src={data.image}alt=""  /></div>
+            <div style={styles.Item4} ><p style={styles.p} >{data.description}</p></div>
         
-            </Link>
-        </div>
+        {
+                goToCart ? 
+            <div style={styles.Item9}>
+
+                 <Link to="/Cart/Cart">
+                 <button style={styles.Item6}>Terminar compra</button>
+                 </Link>
+            </div>
+
         : <div style={styles.Item9}>
             <ItemCount stock={data.stock} initial={1} onAdd={onAdd}/>
-
-        </div>
-
-       }
-       { usuario ?
-        <button style={styles.button2}  onClick={()=>handleWish(data)}><FavoriteBorderIcon/></button> : <>
-   
-         <p style={styles.Item5}> Ingresa tu cuenta para agregar a favoritos</p>     </>}
-        
-       <button style={styles.Item6} onClick={remover}>Remover producto</button>
-       <button style={styles.Item7} onClick={limpiar}>Limpiar Carro</button>
-       <button style={styles.Item8} onClick={buscar}>Buscar</button>
+          </div>
+            }
+        { usuario ?
+             <button style={styles.button2}  onClick={()=>handleWish(data)}><FavoriteBorderIcon/></button> : <>
+             <p style={styles.Item5}> Ingresa tu cuenta para agregar a favoritos</p></>}
+             <button style={styles.Item6} onClick={remover}>Remover producto</button>
+             <button style={styles.Item7} onClick={limpiar}>Limpiar Carro</button>
+             <button style={styles.Item8} onClick={buscar}>Buscar</button>
        
-   
-       
-       
-       
-            
-      
-
         </div>  
-    )
+    )}
 
 
-   
-
-
-}
 const styles = {
 
     button2: {
