@@ -41,15 +41,15 @@ const styles = {
 
     },
     texto:{
-    fontSize: 12,
-    margin: 20,
+    fontSize: 11,
+    
    
 },
 texto2:{
     fontSize: 20,
 },
 contenedor:{
-    width: 280,
+    width: 290,
     height: 330,
     borderRadius: 8,
     border: '1px solid rgba(0, 0, 0, 0.3)',
@@ -67,7 +67,16 @@ contenedor:{
     textAlign: 'center',
 },
 button: {
-    marginBottom: 20,
+    marginBottom: 10,
+    backgroundColor: 'rgb(73, 73, 116)',     
+    alignSelf: 'center',
+    height: '35px',
+    color: 'white',
+    borderRadius: 8,
+    border: 'none',
+    width: 150,
+    marginBottom: 10, 
+   
 },
 button2: {
     

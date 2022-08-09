@@ -57,7 +57,7 @@ const ItemDetail = ({data}) => {
 
         <Link to="/Cart/Cart">
           
-            <button>terminar compra</button>
+            <button style={styles.Item6}>Terminar compra</button>
         
             </Link>
         </div>
@@ -96,10 +96,9 @@ const styles = {
     button2: {
     
         
-        border: 'none',
-        gridColumnStart: '1',
-    gridColumnEnd: '1',
-    
+    border: 'none',
+    gridColumnStart: '1',
+    gridColumnEnd: '1',    
     gridRowStart: '1',
     gridRowEnd: '1 ',
     marginLeft: 370,
@@ -112,8 +111,7 @@ const styles = {
         height: 340,
         width: 340, 
         padding: 35,
-        border: '1px solid rgba(0, 0, 0, 0.3)',
-        
+        border: '1px solid rgba(0, 0, 0, 0.3)',        
         boxShadow: '3px 3px 5px rgba(0, 124, 8.4, 0.2)',
         borderRadius: 8,
         

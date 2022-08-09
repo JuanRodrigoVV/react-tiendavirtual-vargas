@@ -166,12 +166,14 @@ const styles = {
     h2: {       
         fontSize: 15,
         fontWeight: 200,
+        marginBottom: '-5px',
     },
     imagen2: {
         
         
         padding: '10px',
         width: '100px',
+        height: '100px',
 
        
         marginLeft: 'auto',

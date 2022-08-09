@@ -42,47 +42,52 @@ const NavBar = () => {
 },[])
 
 const [categorias, setCategorias] = useState([]);
-/* const [usuario, setUsuario] = useState(null);
-onAuthStateChanged(auth, (usuarioFirebase) => {
-    if (usuarioFirebase) {
-        setUsuario(usuarioFirebase) 
-                 
-    } else {
-        setUsuario(null)
-    }
-}) */
-
-    /*      
-    const categories = [
-        {name: "Electronics", id: 0, route: "/category/electronics"},
-        {name: "Jewelery", id: 1, route: "/category/jewelery"},
-        {name: "Men's Clothing", id: 2, route: "/category/men's clothing"},
-        {name: "Women's Clothing", id: 3, route: "/category/women's clothing"},   
-    ];
- */
- 
-
-
 
     return (
-        <header style={styles.header}>
-        <Link to="/"><img style={styles.img} src={logo} alt="" /></Link>
-        <h1>Leatnik</h1 > 
-   
-       <div style={styles.links} >
+        <header >
+            <div style={styles.header}>
+
+            
+            <div style={styles.Item1}>
+        <Link to="/">
+            <img style={styles.img} src={logo} alt="" />
+
+            </Link>
+            </div>
+        <h1 style={styles.Item2}>Leatnik Shopping</h1 > 
+   <div style={styles.Item3}>
+
           <nav >
+       <div style={styles.links} >
             {categorias.map((category) => <Link key={category.id} style={styles.links} to={category.route}>{category.name}</Link> )}
-        </nav>
         </div>
-        <Link to="/Cart/Cart"> <CartWidget/> </Link>
-        <Link to="/WishList/WishList"><WishWidget/> </Link>
+        </nav>
+   </div>
+        <div style={styles.Item4}>
+        <Link style={styles.linkIcon}  to="/Cart/Cart"> <CartWidget/> </Link>
+        </div>        
+        <div style={styles.Item5}>
+        <Link style={styles.linkIcon} to="/WishList/WishList"><WishWidget /> </Link>
+        </div>
         {usuario ? 
         <>
-        <h1>{usuario.email}</h1> <button onClick={handleLogOut}>Logout</button>
-        </> : <Link to="/login"> <h1>Login</h1></Link>}
-        <Link to="/Purchases/Purchases"><h1>Consultar Compras</h1></Link>
+        <div style={styles.Item6}>
+        <h1 style={styles.hLink}>{usuario.email}</h1>
+        </div>
+        <div style={styles.Item8}>
+         <button style={styles.button} onClick={handleLogOut}>Logout</button>
+        </div>
+        </> : <div style={styles.Item6}>
+
+            <Link style={styles.h1} to="/login"> <h1 style={styles.hLink}>Login</h1></Link>
+        </div>
+            }
+            <div style={styles.Item7}>
+        <Link style={styles.h1} to="/Purchases/Purchases"><h1 style={styles.hLink} >Consultar Compras</h1></Link>
+
+            </div>
         
-        
+        </div>
         </header>
         
     ) 
@@ -90,22 +95,25 @@ onAuthStateChanged(auth, (usuarioFirebase) => {
 
 const styles = {
     header: {
-        display: 'flex',
-        justifyContent: 'space-between',
+        display: 'grid',
+        gridTemplateColumns: '100px 100px 200px 450px',
+        gridTemplateRows: '80px 80px',
         alignItems: 'center',
-        padding: '10', 
-        aligContent: 'center',
-        
-        
         justifyItems: 'center',
+       
         backgroundColor: '#494974',
         borderRadius: 5,
+        border: '1px solid rgba(0, 0, 0, 0.3)',
+        
+        boxShadow: '0px 0px 5px rgba(0, 0, 8.4, 0.2)',
         
     },
      
     img: {
         width: 200,
         height: 200,
+        width: '100%',
+        
     
     },
     icono: {
@@ -114,19 +122,129 @@ const styles = {
         marginRight: 50,
     },
     links: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: '10', 
-        aligContent: 'center',
-        felxDirection: 'row',
-        
         textDecoration: 'none',
-        fontSize: 15,
         color: 'white',
+        margin: 5,   
+        width: 345,    
+        fontSize: 20,    
+        display: 'flex',
+        flexDirection: 'row',    
+        color: 'white',
+        fontWeight: '100',
+ 
     
     
     },
+
+    Item1: {
+        gridColumnStart: '1',
+        gridColumnEnd: '3',    
+        gridRowStart: '1',
+        gridRowEnd: '3',
+
+    },
+    Item2: {
+        gridColumnStart: '3',
+        gridColumnEnd: '3',    
+        gridRowStart: '1',
+        gridRowEnd: '3',
+        alignSelf: 'center',
+        display: 'flex',
+        fontSize: 20,
+        color: 'white',
+        fontWeight: '200',
+
+    },
+    Item3: {
+        gridColumnStart: '4',
+        gridColumnEnd: '4',    
+        gridRowStart: '1',
+        gridRowEnd: '4',
+
+    },
+
+    Item4: {
+        gridColumnStart: '6',
+        gridColumnEnd: '6',    
+        gridRowStart: '1',
+        gridRowEnd: '3',
+
+    },
+    Item5: {
+        gridColumnStart: '7',
+        gridColumnEnd: '7',    
+        gridRowStart: '1',
+        gridRowEnd: '3',
+
+    },
+    Item6: {
+        gridColumnStart: '8',
+        gridColumnEnd: '8',    
+        gridRowStart: '1',
+        gridRowEnd: '1',
+        fontSize: 10,
+        textDecoration: 'none',
+
+    },
+    Item6: {
+        gridColumnStart: '8',
+        gridColumnEnd: '8',    
+        gridRowStart: '1',
+        gridRowEnd: '1',
+        fontSize: 10,
+        textDecoration: 'none',
+
+    },
+    Item8: {
+        gridColumnStart: '8',
+        gridColumnEnd: '8',    
+        gridRowStart: '1',
+        gridRowEnd: '3',
+        fontSize: 10,
+        textDecoration: 'none',
+
+    },
+   
+    Item7: {
+        gridColumnStart: '8',
+        gridColumnEnd: '8',    
+        gridRowStart: '2',
+        gridRowEnd: '2',
+        fontSize: 8,
+        fontWeight: '200',
+        
+        
+
+    },
+    h1: {
+        color: 'white',
+        textDecoration: 'none',
+        marginRight: '50px',
+        
+    },
+    hLink: {
+        fontWeight: '200',
+        color: 'white',
+        fontSize: 15,
+    },
+    button: {
+        backgroundColor: 'rgb(73, 87, 116)', 
+        width: 100,
+        alignSelf: 'center',
+        height: '35px',
+        color: 'white',
+        border: 'none',        
+        boxShadow: '3px 3px 5px rgba(0, 124, 8.4, 0.2)',
+        borderRadius: 8,
+        
+        
+        
+            
+           
+        },
+        linkIcon: {
+            textDecoration: 'none',
+        }
 }
 
 export default NavBar

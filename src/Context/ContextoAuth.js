@@ -188,7 +188,7 @@ useEffect (()=>{
            
         })
     };
-    console.log(wishList)
+    
     const handleStorage = (wishesRestore) => {
             localStorage.setItem('itemsWish', JSON.stringify(wishesRestore))
             var storage = JSON.parse(localStorage.getItem('itemsWish'));

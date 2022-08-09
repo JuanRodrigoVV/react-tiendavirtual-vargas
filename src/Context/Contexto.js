@@ -16,20 +16,14 @@ const CustomProvider = ({ children }) => {
     const [wishes, setWishes] = useState([]);
     const {usuario, wishList, wishRestore2, handleRestore, control } = useContext(contexto2);   
     
-/* {if (wishes.length === 0) {
 
-} else {
-    setWishes(wishRestore2);
-}
-
-}; */
 
 
 useEffect (()=>{
      
     
         var storage = JSON.parse(localStorage.getItem('itemsWish'))
-        /* console.log */
+    
        if (storage === null) {
             console.log("ESTO 1 ES" + storage)
             console.log(control)
